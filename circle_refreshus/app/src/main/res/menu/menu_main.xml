@@ -1,0 +1,12 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.refreshus.jinwoo.circle_refreshus.MainActivity">
+    <item
+        android:id="@+id/action_viewList"
+        android:orderInCategory="100"
+        android:icon="@mipmap/ic_list_black_24dp"
+        android:title="View List"
+        app:showAsAction="always" />
+</menu>
