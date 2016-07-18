@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.refreshus.jinwoo.circle_refreshus">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,8 +27,7 @@
             android:name=".ListActivity"
             android:label="@string/title_activity_list"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
+            android:theme="@style/AppTheme">]
             <!-- Parent activity meta-data to support 4.0 and lower-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
