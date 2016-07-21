@@ -4,32 +4,40 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 
 public class ListActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+
 
         Button NwkBtn = (Button) findViewById(R.id.NetworkBtn);
         NwkBtn.setOnClickListener(new View.OnClickListener(){
@@ -41,6 +49,7 @@ public class ListActivity extends AppCompatActivity {
                 if(networkInfo != null && networkInfo.isConnected()){
                     // fetch data
                     Toast.makeText(ListActivity.this,"Connected to the web!", Toast.LENGTH_LONG).show();
+                    new FeedTask().execute();
                 } else{
                     // display error
                     Toast.makeText(ListActivity.this,"Device not connected to network", Toast.LENGTH_LONG).show();
@@ -48,6 +57,7 @@ public class ListActivity extends AppCompatActivity {
             }
         });
     }
+
 /*
     public void myClickHandler(View view){
 
@@ -75,5 +85,46 @@ public class ListActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public class FeedTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                // Create okHttp Client object
+                OkHttpClient client = new OkHttpClient();
+
+                // Define request being sent to the server
+                RequestBody formBody = new FormEncodingBuilder()
+                        .add("content type","application/json")
+                        .add("operation", "QUERY")
+                        .add("query_type", "list")
+                        .add("user", "T1")
+                        .build();
+
+                Request request = new Request.Builder()
+                        .url("http://evident-relic-120823.appspot.com/")
+                        .post(formBody)
+                        .build();
+
+                // Transport the request and wait for response to process next
+                Response response = client.newCall(request).execute();
+                if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                return response.body().string();
+            } catch (Exception e){
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s){
+            super.onPostExecute(s);
+            TextView testText = (TextView) findViewById(R.id.testText);
+            testText.setText(s);
+            testText.append("Done!");
+        }
+
+    }
+
 
 }
