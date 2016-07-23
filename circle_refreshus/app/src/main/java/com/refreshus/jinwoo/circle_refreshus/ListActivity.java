@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
@@ -96,15 +97,16 @@ public class ListActivity extends AppCompatActivity {
 
                 // Define request being sent to the server
                 RequestBody formBody = new FormEncodingBuilder()
-                        .add("content type","application/json")
                         .add("operation", "QUERY")
-                        .add("query_type", "list")
+                        .add("query_type", "listitems")
+                        .add("list_name", "Groceries")
                         .add("user", "T1")
                         .build();
 
                 Request request = new Request.Builder()
                         .url("http://evident-relic-120823.appspot.com/")
                         .post(formBody)
+                        .addHeader("content-type","application/json")
                         .build();
 
                 // Transport the request and wait for response to process next
