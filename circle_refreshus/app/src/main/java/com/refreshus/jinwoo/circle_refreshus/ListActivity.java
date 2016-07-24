@@ -100,13 +100,13 @@ public class ListActivity extends AppCompatActivity {
                         .add("operation", "QUERY")
                         .add("query_type", "listitems")
                         .add("list_name", "Groceries")
-                        .add("user", "T1")
+                        //.add("user", "T1")
                         .build();
 
                 Request request = new Request.Builder()
                         .url("http://evident-relic-120823.appspot.com/")
                         .post(formBody)
-                        .addHeader("content-type","application/json")
+                        .addHeader("content type","application/json")
                         .build();
 
                 // Transport the request and wait for response to process next
@@ -127,6 +127,4 @@ public class ListActivity extends AppCompatActivity {
         }
 
     }
-
-
 }

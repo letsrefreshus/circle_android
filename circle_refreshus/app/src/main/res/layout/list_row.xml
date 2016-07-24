@@ -5,13 +5,12 @@
     android:background="#FFF9F9F9"
     android:paddingRight="10dp"
     android:paddingTop="10dp"
-    android:paddingBttom="10dp">
+    android:paddingBottom="10dp">
 
-    <ImageView
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listItemFoodIcon"
-        android:src="@drawable/googleplusgrey"
+        android:id="@+id/listItemCheckbox"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="12dp"
@@ -24,7 +23,7 @@
         android:text="Food Name"
         android:id="@+id/listItemFoodTitle"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/listItemFoodIcon"
+        android:layout_toEndOf="@+id/listItemCheckbox"
         android:ellipsize="end"
         android:singleLine="true"
         android:layout_marginBottom="2dp" />
@@ -35,8 +34,8 @@
         android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         android:id="@+id/listItemFoodText"
         android:layout_below="@+id/listItemFoodTitle"
-        android:layout_alignPArentEnd="true"
-        android:layout_toEndOf="@+id/listItemFoodIcon"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/listItemCheckbox"
         android:ellipsize="end"
         android:singleLine="true" />
 

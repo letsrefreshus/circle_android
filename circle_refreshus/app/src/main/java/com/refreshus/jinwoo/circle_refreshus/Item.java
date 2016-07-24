@@ -6,23 +6,21 @@ package com.refreshus.jinwoo.circle_refreshus;
 public class Item {
     private String itemName, message;
     private long itemId, dateCreatedMilli;
-    private Category category;
+    private boolean check;
 
-    public enum Category{ EGG, MILK, CHEESE, OTHERS}
-
-    public Item(String itemName, String message, Category category){
+    public Item(String itemName, String message, boolean check){
         this.itemName = itemName;
         this.message= message;
-        this.category = category;
+        this.check = check;
         this.itemId = 0;
         this.dateCreatedMilli = 0;
     }
 
-    public Item(String itemName, String message, Category category, long noteId, long dateCreatedMilli){
+    public Item(String itemName, String message, Boolean check, long itemId, long dateCreatedMilli){
         this.itemName = itemName;
         this.message= message;
-        this.category = category;
-        this.itemId = noteId;
+        this.check = check;
+        this.itemId = itemId;
         this.dateCreatedMilli = dateCreatedMilli;
     }
 
@@ -34,7 +32,7 @@ public class Item {
         return message;
     }
 
-    public Category getCategory(){ return category; }
+    public boolean getCheck(){ return check; }
 
     public long gotDate(){return dateCreatedMilli;}
 
@@ -42,9 +40,9 @@ public class Item {
 
     public String toString(){
         return "ID: "+ itemId + " Item Name: " + itemName + " Message: " + message +
-                " IconID: " + category.name() + " Date: " + dateCreatedMilli;
+                " isChecked: " + check + " Date: " + dateCreatedMilli;
     }
-
+/*
     public int getAsscoiatedDrawable(){
         return categoryToDrawable(category);
     }
@@ -61,5 +59,5 @@ public class Item {
                 return R.drawable.youtube;
         }
         return R.drawable.googleplusgrey;
-    }
+    }*/
 }
