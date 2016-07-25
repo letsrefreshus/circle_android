@@ -17,6 +17,12 @@ import java.util.ArrayList;
  */
 public class ItemAdapter extends ArrayAdapter<Item> {
 
+    public static class ViewHolder{
+        TextView itemTitle;
+        TextView itemText;
+        CheckBox itemBox;
+    }
+
     public ItemAdapter(Context context, ArrayList<Item> items){
         super(context, 0 ,items);
     }
@@ -26,21 +32,36 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         // Get the data item for this position
         Item item = getItem(position);
 
+        ViewHolder viewHolder;
         // Check if an existing view is being reused, otherwise inflate a new view from custom row layout
         if(convertView == null){
+
+            // if we don't have a view that is being used, create one and make sure you create a
+            // view holder along with it to save our view references to.
+            viewHolder = new ViewHolder();
+
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_row, parent, false);
+
+            // set our views to our view holder so that we no longer have to go back and
+            // use find view by id every time we have a new one
+            viewHolder.itemTitle = (TextView) convertView.findViewById(R.id.listItemFoodTitle);
+            viewHolder.itemText = (TextView) convertView.findViewById(R.id.listItemFoodText);
+            viewHolder.itemBox = (CheckBox) convertView.findViewById(R.id.listItemCheckbox);
+
+            // use set tag to remember our viewholder which is holding references to our widgets
+            convertView.setTag(viewHolder);
+        } else {
+            // we already have a view so just go to our viewholder and grab the widgets from it.
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        // Grab references of views so we can populate them with specific item row data
-        TextView itemTitle = (TextView) convertView.findViewById(R.id.listItemFoodTitle);
-        TextView itemText = (TextView) convertView.findViewById(R.id.listItemFoodText);
-        CheckBox itemBox = (CheckBox) convertView.findViewById(R.id.listItemCheckbox);
+        // Populate the data into the template view using the data object
+        viewHolder.itemTitle.setText(item.getItemName());
+        viewHolder.itemText.setText(item.getMessage());
+        viewHolder.itemBox.setChecked(item.getCheck());
 
-        // Fill each new referenced view with data associated with note it's referencing
-        itemTitle.setText(item.getItemName());
-        itemText.setText(item.getMessage());
-        itemBox.setChecked(item.getCheck());
-
+        // now that w e modified the view to display appropriate data,
+        // return it so it will be displayed.
         return convertView;
     }
 }
