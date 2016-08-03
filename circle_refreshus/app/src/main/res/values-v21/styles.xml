@@ -6,4 +6,21 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="MyBarTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+    </style>
+
+    <style name="ActionBar" parent="@android:style/Widget.ActionBar">
+        <item name="android:titleTextStyle">@style/ActionBar.Title</item>
+        <item name="android:subtitleTextStyle">@style/ActionBar.Subtitle</item>
+    </style>
+
+    <style name="ActionBar.Title">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="ActionBar.Subtitle">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
 </resources>

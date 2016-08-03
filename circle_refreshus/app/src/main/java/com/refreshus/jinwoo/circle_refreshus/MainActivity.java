@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setLogo(R.drawable.logo_final_google);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         /*
         Button mainTOlistBtn = (Button) findViewById(R.id.fromMaintoList);
