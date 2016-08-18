@@ -5,6 +5,7 @@ import android.app.ListFragment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,36 +27,35 @@ public class MainActivityFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
-        /*
-        String[] values = new String[]{"Egg", "Ham", "Milk", "Salad", "Cheese", "Soda", "Wine", "Lemon","Chicken","Beef","Flowers"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, values);
-
-        setListAdapter(adapter);
-        */
 
         items = new ArrayList<Item>();
-        items.add(new Item("Egg", "Grade A", false));
-        items.add(new Item("Milk", "2% Foodlion", false));
-        items.add(new Item("Chicken", "Breast", true));
-        items.add(new Item("Turkey", "Thigh", false));
-        items.add(new Item("cookies", "White Macadamia", false));
-        items.add(new Item("Pickles", "in a Jar", false));
-        items.add(new Item("Beer", "Summer Shandy", true));
-        items.add(new Item("Apple", "Figi", false));
+        items.add(new Item("Egg", false));
+        items.add(new Item("Milk", false));
+        items.add(new Item("Chicken", true));
+        items.add(new Item("Turkey", false));
+        items.add(new Item("cookies", false));
+        items.add(new Item("Pickles", false));
+        items.add(new Item("Beer",  true));
+        items.add(new Item("Apple", false));
 
         itemAdapter = new ItemAdapter(getActivity(), items);
 
         setListAdapter(itemAdapter);
 
         // grey divider lines
-        getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.darker_gray));
+
+        getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.white));
         getListView().setDividerHeight(1);
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id){
         super.onListItemClick(l, v, position, id);
+    }
+
+    public void addItem(String Item, String Description, boolean isChecked){
+        items.add(new Item("New Item", false));
+        setListAdapter(itemAdapter);
+        Log.d("myTag", "This is my message");
     }
 }

@@ -3,11 +3,15 @@ package com.refreshus.jinwoo.circle_refreshus;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +26,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,8 +47,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-
 
         Button NwkBtn = (Button) findViewById(R.id.NetworkBtn);
         NwkBtn.setOnClickListener(new View.OnClickListener(){
@@ -92,6 +95,9 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(new Intent(ListActivity.this,MainActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 return true;
+            case R.id.add:
+
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -118,7 +124,8 @@ public class ListActivity extends AppCompatActivity {
                 final TextView outputView = (TextView) findViewById(R.id.testText);
                 URL url = new URL("http://evident-relic-120823.appspot.com");
                 HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-                String urlParameters = "{\"operation\": \"QUERY\", \"query_type\": \"temperature\", \"user\": \"Tucker\"}";
+                //String urlParameters = "{\"operation\": \"QUERY\", \"query_type\": \"list\", \"user\": \"T1\"}";
+                String urlParameters = "{\"operation\": \"QUERY\", \"query_type\": \"listitems\", \"list_name\": \"Groceries\"}";
                 connection.setRequestMethod("POST");
                 connection.setRequestProperty("USER-AGENT", "Mozilla/5.0");
                 connection.setRequestProperty("ACCEPT-LANGUAGE", "en-US,en;0.5");
@@ -132,22 +139,42 @@ public class ListActivity extends AppCompatActivity {
                 System.out.println("Post parameters : " + urlParameters);
                 System.out.println("Response Code : " + responseCode);
                 final StringBuilder output = new StringBuilder("");
-                //output.append(System.getProperty("line.separator") + "Request Parameters " + urlParameters);
-                //output.append(System.getProperty("line.separator") + "Response Code " + responseCode);
-                //output.append(System.getProperty("line.separator") + "Type " + "POST");
+
                 BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String line = "";
                 StringBuilder responseOutput = new StringBuilder();
-                //System.out.println("output===============" + br);
+
                 while((line = br.readLine()) != null ) {
                     responseOutput.append(line);
                 }
                 br.close();
-                output.append("" + responseOutput.toString());
+                output.append(responseOutput.toString());
+                String finalJson = output.toString();
+
+                int id;
+                String itemName;
+                int isActive;
+                String finaloutput = "Nothing";
+
+                // Parsing JSON OBJECT;
+                try {
+                    JSONArray parentArray = new JSONArray(finalJson);       // gets the "" array item
+                    JSONObject finalObject = parentArray.getJSONObject(0);  // gets the first (and only) list of key-value string
+                    id = finalObject.getInt("id");
+                    itemName = finalObject.getString("item_name");
+                    isActive = finalObject.getInt("isActive");
+                    finaloutput = "ID:" + String.valueOf(id) + "\nItem name:" + itemName + "\nIs Active:" + String.valueOf(isActive)+ "\n";
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                final String finalOutput1 = finaloutput;
                 ListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        outputView.setText(output);
+                        outputView.setText(finalOutput1);
                         progress.dismiss();
                     }
                 });

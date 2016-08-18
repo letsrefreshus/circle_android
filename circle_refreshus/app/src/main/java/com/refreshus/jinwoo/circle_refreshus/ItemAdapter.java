@@ -19,7 +19,6 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 
     public static class ViewHolder{
         TextView itemTitle;
-        TextView itemText;
         CheckBox itemBox;
     }
 
@@ -45,7 +44,6 @@ public class ItemAdapter extends ArrayAdapter<Item> {
             // set our views to our view holder so that we no longer have to go back and
             // use find view by id every time we have a new one
             viewHolder.itemTitle = (TextView) convertView.findViewById(R.id.listItemFoodTitle);
-            viewHolder.itemText = (TextView) convertView.findViewById(R.id.listItemFoodText);
             viewHolder.itemBox = (CheckBox) convertView.findViewById(R.id.listItemCheckbox);
 
             // use set tag to remember our viewholder which is holding references to our widgets
@@ -57,7 +55,6 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 
         // Populate the data into the template view using the data object
         viewHolder.itemTitle.setText(item.getItemName());
-        viewHolder.itemText.setText(item.getMessage());
         viewHolder.itemBox.setChecked(item.getCheck());
 
         // now that w e modified the view to display appropriate data,

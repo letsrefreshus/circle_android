@@ -28,15 +28,4 @@
         android:singleLine="true"
         android:layout_marginBottom="2dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        android:id="@+id/listItemFoodText"
-        android:layout_below="@+id/listItemFoodTitle"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/listItemCheckbox"
-        android:ellipsize="end"
-        android:singleLine="true" />
-
 </RelativeLayout>

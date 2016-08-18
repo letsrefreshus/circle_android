@@ -1,34 +1,76 @@
 <resources>
 
-    <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorGrey</item>
         <item name="colorPrimaryDark">@color/colorGrey</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionMenuTextColor">@color/colorBlue</item>
+        <item name="android:textAppearanceLargePopupMenu">@color/colorBlue</item>
+        <item name="android:itemTextAppearance">@color/colorBlue</item>
     </style>
 
+    <!--
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="ToolBarTheme" parent="@android:style/Theme.Holo.Light">
-        <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/CustomActionBar</item>
     </style>
 
     <style name="CustomActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/colorGrey</item>
+        <item name="android:background">@color/colorBlue</item>
         <item name="android:titleTextStyle">@style/CustomtextColor</item>
     </style>
 
     <style name="CustomtextColor" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorBlue</item>
+    </style> -->
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColorPrimary">@color/colorOrange_circle</item>
+        <item name="android:actionMenuTextColor">@color/colorBlue</item>
+        <item name="android:textAppearanceLargePopupMenu">@color/colorBlue</item>
+        <item name="android:itemTextAppearance">@color/colorBlue</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColorPrimary">@color/colorOrange_circle</item>
+        <item name="android:actionMenuTextColor">@color/colorBlue</item>
+        <item name="android:textAppearanceLargePopupMenu">@color/colorBlue</item>
+        <item name="android:itemTextAppearance">@color/colorBlue</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- MY bar theme -->
+
+    <style name="MyBarTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+    </style>
+
+    <style name="ActionBar" parent="@android:style/Widget.ActionBar">
+        <item name="android:titleTextStyle">@style/ActionBar.Title</item>
+        <item name="android:subtitleTextStyle">@style/ActionBar.Subtitle</item>
+    </style>
+
+    <style name="ActionBar.Title">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="ActionBar.Subtitle">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="MyBarTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:colorBackground">@color/colorGreen_circle</item>
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColorPrimary">@color/colorOrange_circle</item>
+    </style>
 
 </resources>

@@ -5,8 +5,8 @@
     tools:context="com.refreshus.jinwoo.circle_refreshus.ListActivity">
 
     <item
-        android:id="@+id/action_edit"
+        android:id="@+id/add"
         android:orderInCategory="100"
-        android:title="Edit"
+        android:title="Add"
         app:showAsAction="always" />
 </menu>

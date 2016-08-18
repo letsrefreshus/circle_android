@@ -4,21 +4,19 @@ package com.refreshus.jinwoo.circle_refreshus;
  * Created by Jinwoo on 7/23/2016.
  */
 public class Item {
-    private String itemName, message;
+    private String itemName;
     private long itemId, dateCreatedMilli;
     private boolean check;
 
-    public Item(String itemName, String message, boolean check){
+    public Item(String itemName, boolean check){
         this.itemName = itemName;
-        this.message= message;
         this.check = check;
         this.itemId = 0;
         this.dateCreatedMilli = 0;
     }
 
-    public Item(String itemName, String message, Boolean check, long itemId, long dateCreatedMilli){
+    public Item(String itemName, Boolean check, long itemId, long dateCreatedMilli){
         this.itemName = itemName;
-        this.message= message;
         this.check = check;
         this.itemId = itemId;
         this.dateCreatedMilli = dateCreatedMilli;
@@ -28,10 +26,6 @@ public class Item {
         return itemName;
     }
 
-    public String getMessage(){
-        return message;
-    }
-
     public boolean getCheck(){ return check; }
 
     public long gotDate(){return dateCreatedMilli;}
@@ -39,7 +33,7 @@ public class Item {
     public long getItemId(){ return itemId;}
 
     public String toString(){
-        return "ID: "+ itemId + " Item Name: " + itemName + " Message: " + message +
+        return "ID: "+ itemId + " Item Name: " + itemName +
                 " isChecked: " + check + " Date: " + dateCreatedMilli;
     }
 /*

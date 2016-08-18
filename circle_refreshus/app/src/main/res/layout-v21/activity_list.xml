@@ -6,22 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.refreshus.jinwoo.circle_refreshus.MainActivity" >
+    tools:context="com.refreshus.jinwoo.circle_refreshus.ListActivity"
+    android:elevation="0dp" >
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay" >
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:transitionGroup="false" />
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp" >
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_list" />
 
 </android.support.design.widget.CoordinatorLayout>
